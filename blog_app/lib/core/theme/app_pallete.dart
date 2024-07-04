@@ -9,4 +9,5 @@ class AppPallete{
   static const Color whiteColor = Color.fromRGBO(254, 254, 255, 1);
   static const Color greyColor = Color.fromRGBO(114, 114, 116, 1);
   static const Color errorColor = Color.fromRGBO(167, 21, 16, 1); 
+  static const Color transparentColor = Colors.transparent;
 }
