@@ -1,9 +1,11 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
+import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
 
 class loginPage extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => const SignupPage());
   const loginPage({super.key});
 
   @override
@@ -43,20 +45,25 @@ class _loginPageState extends State<loginPage> {
             const SizedBox(height: 15),
              AuthField(hintText: "Password", controller: passwordController, isObscureText: true,),
             const SizedBox(height: 15),
-            const AuthGradientButton(),
+            const AuthGradientButton(buttonText: "Login",),
             const SizedBox(height: 15),
-            RichText(
-              text: TextSpan(
-                  text: 'Don\'t have an account? ',
-                  style: Theme.of(context).textTheme.titleMedium,
-                  children: [
-                    TextSpan(
-                      text: 'Sign Up.',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AppPallete.gradient1,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ]),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, loginPage.route());
+              },
+              child: RichText(
+                text: TextSpan(
+                    text: 'Don\'t have an account? ',
+                    style: Theme.of(context).textTheme.titleMedium,
+                    children: [
+                      TextSpan(
+                        text: 'Sign Up.',
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: AppPallete.gradient1,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ]),
+              ),
             )
           ],
         ),
