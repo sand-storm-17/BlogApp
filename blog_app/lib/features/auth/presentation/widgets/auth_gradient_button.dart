@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 class AuthGradientButton extends StatelessWidget {
   final String buttonText;
-  const AuthGradientButton({required this.buttonText,super.key});
+  final VoidCallback onPressed;
+  const AuthGradientButton({
+    required this.buttonText,
+    required this.onPressed,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class AuthGradientButton extends StatelessWidget {
               end: Alignment.topRight),
           borderRadius: BorderRadius.circular(15)),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             fixedSize: const Size(395, 55),
             backgroundColor: AppPallete.transparentColor,

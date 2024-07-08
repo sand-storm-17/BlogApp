@@ -4,22 +4,22 @@ import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
 
-class loginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => const SignupPage());
-  const loginPage({super.key});
+  const LoginPage({super.key});
 
   @override
-  _loginPageState createState() => _loginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _loginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
-  void dispose(){
+  void dispose() {
     emailController.dispose();
     passwordController.dispose();
     nameController.dispose();
@@ -41,15 +41,25 @@ class _loginPageState extends State<loginPage> {
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 15),
-             AuthField(hintText: "Email", controller: emailController,),
+            AuthField(
+              hintText: "Email",
+              controller: emailController,
+            ),
             const SizedBox(height: 15),
-             AuthField(hintText: "Password", controller: passwordController, isObscureText: true,),
+            AuthField(
+              hintText: "Password",
+              controller: passwordController,
+              isObscureText: true,
+            ),
             const SizedBox(height: 15),
-            const AuthGradientButton(buttonText: "Login",),
+            AuthGradientButton(
+              buttonText: "Login",
+              onPressed: () {},
+            ),
             const SizedBox(height: 15),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, loginPage.route());
+              onTap: () {
+                Navigator.push(context, LoginPage.route());
               },
               child: RichText(
                 text: TextSpan(
@@ -58,9 +68,12 @@ class _loginPageState extends State<loginPage> {
                     children: [
                       TextSpan(
                         text: 'Sign Up.',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: AppPallete.gradient1,
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                color: AppPallete.gradient1,
+                                fontWeight: FontWeight.bold),
                       )
                     ]),
               ),
